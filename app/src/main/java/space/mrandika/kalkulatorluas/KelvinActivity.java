@@ -1,5 +1,7 @@
 package space.mrandika.kalkulatorluas;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +38,11 @@ public class KelvinActivity extends AppCompatActivity {
 
                 if (!isEmpty && !isInvalidDouble) {
                     double hasil = dCelcius + 273.15;
+                    Intent data = new Intent();
+                    data.setData(Uri.parse(String.valueOf(hasil)));
+                    setResult(RESULT_OK, data);
                     text_hasil.setText(String.format("%s °K", String.valueOf(hasil)));
+                    finish();
                 }
             }
         });
